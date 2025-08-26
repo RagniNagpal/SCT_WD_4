@@ -11,9 +11,19 @@ export default function App() {
   const [newTask, setNewTask] = useState("");
 
   const addTask = () => {
-    if (!newTask.trim()) return;
-    setTasks([...tasks, { id: Date.now(), text: newTask, done: false }]);
-    setNewTask("");
+    if (newTask.trim() === "") {
+      alert("Task cannot be empty!"); 
+      return;
+    }
+
+    const newTaskObj = {
+      id: Date.now(),
+      text: newTask,
+      done: false,
+    };
+
+    setTasks([...tasks, newTaskObj]);
+    setNewTask(""); 
   };
 
   const toggleDone = (id) => {
